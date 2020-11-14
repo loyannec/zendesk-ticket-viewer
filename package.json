@@ -1,0 +1,29 @@
+{
+  "name": "zendesk-ticket-viewer",
+  "version": "1.0.0",
+  "description": "Coding Exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loyannec/zendesk-ticket-viewer.git"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "zendesk"
+  ],
+  "author": "Loyanne Repolho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loyannec/zendesk-ticket-viewer/issues"
+  },
+  "homepage": "https://github.com/loyannec/zendesk-ticket-viewer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "livereloaded": "0.0.1",
+    "nodemon": "^2.0.6"
+  }
+}
