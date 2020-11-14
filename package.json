@@ -2,9 +2,11 @@
   "name": "zendesk-ticket-viewer",
   "version": "1.0.0",
   "description": "Coding Exercise",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node app.js",
+    "watch": "nodemon --ext js,handlebars --ignore public"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,11 @@
   },
   "homepage": "https://github.com/loyannec/zendesk-ticket-viewer#readme",
   "dependencies": {
+    "connect-livereload": "^0.6.1",
     "express": "^4.17.1",
-    "livereloaded": "0.0.1",
+    "express-handlebars": "^5.2.0",
+    "handlebars": "^4.7.6",
+    "livereload": "^0.9.1",
     "nodemon": "^2.0.6"
   }
 }
