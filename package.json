@@ -4,7 +4,7 @@
   "description": "Coding Exercise",
   "main": "app.js",
   "scripts": {
-    "test": "test",
+    "test": "mocha --recursive",
     "start": "node app.js",
     "watch": "nodemon --ext js,handlebars --ignore public"
   },
@@ -24,11 +24,17 @@
   },
   "homepage": "https://github.com/loyannec/zendesk-ticket-viewer#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "connect-livereload": "^0.6.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "handlebars": "^4.7.6",
     "livereload": "^0.9.1",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nock": "^13.0.5"
   }
 }
