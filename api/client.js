@@ -15,6 +15,22 @@ class ZendeskAPIClient {
             ? { success: User.createFromJson(response.success.user) }
             : { error: response.error }
     }
+
+    async getTicket(identifier) {
+        var request = new GetTicketZendeskRequest(this.environment, identifier)
+        var response = await request.execute()
+        return response.success
+            ? { success: Ticket.createFromJson(response.success.ticket) }
+            : { error: response.error }
+    }
+
+    async getTicketAtPage(page, size) {
+        var request = new ListTicketsZendeskRequest(this.environment, page, size)
+        var response = await request.execute()
+        return response.success
+            ? { success: TicketListPage.createFromJson(response.success) }
+            : { error: response.error }
+    }
 }
 
 module.exports = ZendeskAPIClient

@@ -16,7 +16,7 @@ describe('Base Zendesk Request', () => {
     })
 
     it('Must throw an exception when executing', () => {
-        expect(request.execute).to.throw
+        expect(request.execute).to.throw()
     })
 
     it('Must contain a method named get', () => {

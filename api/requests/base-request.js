@@ -11,7 +11,7 @@ class BaseZendeskRequest {
         })
     }
 
-    async execute() {
+    execute() {
         throw new Error('not implemented')
     }
 

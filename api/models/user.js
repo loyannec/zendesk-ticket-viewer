@@ -13,7 +13,8 @@ class User extends JSONInitializable {
     }
 
     static createFromJson(json) {
-        return new User(json.identifier, json.name, json.email)
+        return new User(json.id, json.name, json.email)
+    }
 }
 
 module.exports = User

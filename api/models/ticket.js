@@ -40,8 +40,8 @@ class Ticket extends JSONInitializable {
                           json.tags,
                           json.subject,
                           json.description,
-                          new Date(json.createdAt),
-                          new Date(json.updateAt))
+                          new Date(json.created_at),
+                          new Date(json.update_at))
     }
 }
 

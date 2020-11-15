@@ -15,7 +15,9 @@
   "keywords": [
     "node",
     "javascript",
-    "zendesk"
+    "zendesk",
+    "api",
+    "server"
   ],
   "author": "Loyanne Repolho",
   "license": "MIT",

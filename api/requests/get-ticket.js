@@ -1,6 +1,6 @@
 const BaseZendeskRequest = require('./base-request')
 
-class GetTicketsZendeskRequest extends BaseZendeskRequest {
+class GetTicketZendeskRequest extends BaseZendeskRequest {
     identifier
 
     constructor(environment, identifier) {
@@ -13,4 +13,4 @@ class GetTicketsZendeskRequest extends BaseZendeskRequest {
     }
 }
 
-module.exports = GetTicketsZendeskRequest
+module.exports = GetTicketZendeskRequest
