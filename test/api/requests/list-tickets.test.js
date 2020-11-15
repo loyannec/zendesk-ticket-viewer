@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 const nock = require('nock')
-const GetTicketsZendeskRequest = require('../../../api/requests/get-tickets')
+const ListTicketsZendeskRequest = require('../../../api/requests/list-tickets')
 const ZendeskEnvironment = require('../../../api/environment')
 
 describe('Get Tickets Request', () => {
@@ -8,7 +8,7 @@ describe('Get Tickets Request', () => {
 
     beforeEach(() => {
         var environment = new ZendeskEnvironment('subdomain', 'username', 'token')
-        request = new GetTicketsZendeskRequest(environment)
+        request = new ListTicketsZendeskRequest(environment)
     })
 
     it('Should return a list of tickets', async () => {
