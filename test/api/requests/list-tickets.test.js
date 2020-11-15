@@ -3,7 +3,7 @@ const nock = require('nock')
 const ListTicketsZendeskRequest = require('../../../api/requests/list-tickets')
 const ZendeskEnvironment = require('../../../api/environment')
 
-describe('Get Tickets Request', () => {
+describe('List Tickets Request', () => {
     var request
 
     beforeEach(() => {
