@@ -1,4 +1,4 @@
-const JSONInitializable {
+class JSONInitializable {
     static createFromJson(json) {
         throw new Error('not implemented')
     }
