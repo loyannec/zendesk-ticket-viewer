@@ -1,9 +1,9 @@
-const BaseRequest = require('./base-request')
+const BaseZendeskRequest = require('./base-request')
 
-class GetTicketsRequest extends BaseRequest {
+class GetTicketsZendeskRequest extends BaseZendeskRequest {
     async execute() {
         return await this.get('/tickets.json')
     }
 }
 
-module.exports = GetTicketsRequest
+module.exports = GetTicketsZendeskRequest

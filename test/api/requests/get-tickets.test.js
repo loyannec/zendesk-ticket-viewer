@@ -32,4 +32,13 @@ describe('Get Tickets Request', () => {
         var response = await request.execute()
         expect(response.success.tickets).to.lengthOf(4)
     })
+
+    it('Should return a error', async () => {
+        nock('https://subdomain.zendesk.com/api/v2')
+            .get('/tickets.json')
+            .replyWithError('bad request')
+
+        var response = await request.execute()
+        expect(response.error).to.be.an('error')
+    })
 })
