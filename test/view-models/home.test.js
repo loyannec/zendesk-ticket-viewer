@@ -41,15 +41,18 @@ describe('Home View Model', () => {
     context('Get Tickets At Page', () => {
         it('Should return a list of tickets', async () => {
             var givenPage = undefined
+            var givenSize = undefined
 
-            sinon.stub(ZendeskAPIClient.prototype, 'getTicketAtPage').callsFake((page) => {
+            sinon.stub(ZendeskAPIClient.prototype, 'getTicketAtPage').callsFake((page, size) => {
                 givenPage = page
+                givenSize = size
                 return { success: ticketsPage }
             })
 
             var response = await viewModel.getTicketsAtPage(2)
             expect(response.success).to.be.equal(ticketsPage)
             expect(givenPage).to.be.equal(2)
+            expect(givenSize).to.be.equal(25)
         })
 
         it('Returns error when client fails', async () => {

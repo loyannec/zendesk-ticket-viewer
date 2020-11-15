@@ -3,6 +3,8 @@ const ZendeskAPIClient = require('../api/client')
 class HomeViewModel {
     static pageSize = 25
 
+    #client
+
     constructor(environment) {
         this.client = new ZendeskAPIClient(environment)
     }

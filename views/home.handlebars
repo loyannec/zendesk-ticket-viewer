@@ -1,1 +1,8 @@
-<p>LOYANNECRISTINE</p>
+{{#if ticketsPage.success}}
+    <p>tem tickets</p>
+    {{#each ticketsPage.success.tickets}}
+        <p>ticket: {{this.subject}}</p>
+    {{/each}}
+{{else}}
+    <p>sem tickets</p>
+{{/if}}
