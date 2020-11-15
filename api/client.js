@@ -1,4 +1,4 @@
-const User = require('./models/user')
+const { User, Ticket, TicketListPage } = require('./models')
 const { GetLoggedInUserZendeskRequest,
         GetTicketZendeskRequest,
         ListTicketsZendeskRequest } = require('./requests')
@@ -11,7 +11,9 @@ class ZendeskAPIClient {
     async getUser() {
         var request = new GetLoggedInUserZendeskRequest(this.environment)
         var response = await request.execute()
-        return response.success ? User(response.success.user) : response.error
+        return response.success
+            ? { success: User.createFromJson(response.success.user) }
+            : { error: response.error }
     }
 }
 
