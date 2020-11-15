@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-require('./plugins')(app);
+require('./config')(app);
 require('./routes')(app);
 
 /*

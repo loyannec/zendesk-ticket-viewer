@@ -109,6 +109,7 @@ describe('API Client', () => {
             sinon.stub(ListTicketsZendeskRequest.prototype, 'execute').callsFake(() => ({ success: page }))
 
             var response = await client.getTicketAtPage(3, 2)
+            expect(response.success).to.be.instanceof(TicketListPage)
             expect(response.success.tickets.length).to.be.equal(2)
             expect(response.success.tickets[0]).to.be.instanceof(Ticket)
             expect(response.success.tickets[0].identifier).to.be.equal(6)
