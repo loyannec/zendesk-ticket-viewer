@@ -41,7 +41,7 @@ Follow the following steps to run the application:
 
 1. Clone this repository.
 2. `$ cd` into the root directory of this repo.
-3. Run `npm install` to install the required dependencies that are required by the application. (This instalation process assumes you have [Node.js](https://nodejs.org/), which includes `npm`, to do this and to run the app).
+3. Run `npm install` to install the required dependencies that are required by the application. (This installation process assumes you have [Node.js](https://nodejs.org/), which includes `npm`, to do this and to run the app).
 4. Run `npm start` in the base application folder to start the server. (Run `npm run watch` if you would like to alter any files during the execution.)
 5. Access the running server by navigating to `localhost:3000` in a browser.
 
