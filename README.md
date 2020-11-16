@@ -92,7 +92,7 @@ The application embed for development a static connect server with livereload pl
 
 ## **Example**
 
-[]()
+<img align="center" src="https://github.com/loyannec/zendesk-ticket-viewer/blob/master/apresentation.gif" >
 
 ## License
 
