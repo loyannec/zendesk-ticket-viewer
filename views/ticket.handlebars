@@ -1,0 +1,12 @@
+{{#with ticket.success}}
+    <p class="lead">{{description}}</p>
+    <div class="text-capitalize"><strong>Status:</strong>&nbsp;{{status}}</div>
+    <div class="mt-4">
+        {{#each tags}}
+            <span class="bg-info rounded shadow p-2 text-light">{{this}}</span>
+        {{/each}}
+    </div>
+    <div class="w-100 mt-4 text-right text-muted"><small> Created at: {{ formatDate createdAt }}</small></div>
+{{else}}
+    <div class="p-3 mb-2 bg-danger text-white text-center"><strong>Ticket not found</strong></div>
+{{/with}}
