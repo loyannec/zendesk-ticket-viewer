@@ -1,14 +1,15 @@
 $(() => {
-    var ticketsList = { page: 1 }
+    var page = 1
     var loadingTrigger = null
     var isLoading = false
-    var canFetchMore = true
+    var loading = $('#loading')
+    var listContainer = $('#tickets-container')
 
-    $('#tickets-container').scroll((event) => {
+    listContainer.scroll((event) => {
         var list = event.target
         var hasScrolledToBottom = list.scrollHeight - list.scrollTop === list.clientHeight
 
-        if (hasScrolledToBottom) {
+        if (hasScrolledToBottom && canFetchMore()) {
             clearTimeout(loadingTrigger)
             loadingTrigger = setTimeout(fetchNextPage, 500)
         }
@@ -17,20 +18,42 @@ $(() => {
     function fetchNextPage() {
         if (isLoading) { return }
 
-        var nextPage = ticketsList.page + 1
-        isLoading = true
-        console.log('fetch next page: ' + nextPage)
+        showLoading()
 
-        $.getJSON(`/list-tickets?page=${nextPage}`, (nextListPage, status) => {
+        $.get(`/tickets?page=${page + 1}`, (result, status) => {
+            hideLoading()
+
             if (status === 'success') {
                 page += 1
-                if (typeof(tickets) === 'string') {
-                    $('#tickets-container').append(tickets)
-                } else {
-                    canFetchMore = false
-                }
+                listContainer.append(result.html)
             }
-            isLoading = false
         })
     }
+
+    function canFetchMore() {
+        return listContainer.children().last().hasClass('list-end') === false
+    }
+
+    function showLoading() {
+        isLoading = true
+        loading.addClass('show-loading')
+        loading.removeClass('d-none')
+    }
+
+    function hideLoading() {
+        setTimeout(() => {
+            loading.removeClass('show-loading')
+            isLoading = false
+        }, 300)
+    }
 })
+
+function showTicket(identifier, linkElement) {
+    var detailsContainer = $(linkElement.parentNode.parentNode.nextElementSibling.firstElementChild)
+
+    $.get(`/ticket/${identifier}`, (html, status) => {
+        if (status === 'success') {
+            detailsContainer.html(html)
+        }
+    })
+}
