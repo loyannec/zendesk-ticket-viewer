@@ -4,7 +4,7 @@ Zendesk is a customer service tool that allows the creation and management of su
 
 <img align="center" src="https://github.com/loyannec/zendesk-ticket-viewer/blob/master/zendesk-logo.png" width="200" >
 
-This application is a simple interactive ticket viewer for the [Zendesk](https://www.zendesk.com/) Ticket API using the TDD method for development. This web-application displays ticket information from a Zendesk account that will:
+This application is a simple interactive ticket viewer for the [Zendesk](https://www.zendesk.com/) Ticket API. This web-application displays ticket information from a Zendesk account that will:
 
 - Connect to the Zendesk API
 - Request all the tickets for your account
