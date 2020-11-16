@@ -47,7 +47,7 @@ Follow the following steps to run the application:
 
 ## Usage
 
-You will need to edit your API details for `subdomain`, `email` , `token` found in the `app.js` file.
+You will need to edit your API details for `subdomain`, `email` , `token` found in the `app.js` file at root directory.
 
 ```
 subdomain: <your Zendesk url>
