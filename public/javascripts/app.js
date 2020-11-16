@@ -5,9 +5,8 @@ $(() => {
     var loading = $('#loading')
     var listContainer = $('#tickets-container')
 
-    listContainer.scroll((event) => {
-        var list = event.target
-        var hasScrolledToBottom = list.scrollHeight - list.scrollTop === list.clientHeight
+    $(window).scroll(() => {
+        var hasScrolledToBottom = $(window).height() + $(window).scrollTop() == $(document).height()
 
         if (hasScrolledToBottom && canFetchMore()) {
             clearTimeout(loadingTrigger)

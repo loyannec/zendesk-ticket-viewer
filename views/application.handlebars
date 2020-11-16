@@ -1,14 +1,12 @@
 {{#if ticketsPage.success}}
     <div class="p-3 zendesk-bg-color text-white">
-        <h1 class="display-4">Zendesk Ticket Viewer</h1>
+        <h2>Zendesk Ticket Viewer</h2>
         {{#with user.success}}
-            <p class="text-white">
-                <strong>{{name}}</strong><br />
-                <small class="font-italic">{{email}}</small>
-            </p>
+            <h5>{{name}}</h5>
+            <small class="font-italic">{{email}}</small>
         {{/with}}
     </div>
-    <div id="tickets-container" class="accordion overflow-auto">
+    <div id="tickets-container" class="accordion">
         {{>tickets-list ticketsPage=ticketsPage.success}}
     </div>
     <div id="loading" class="bg-secondary text-center p-2 d-none">

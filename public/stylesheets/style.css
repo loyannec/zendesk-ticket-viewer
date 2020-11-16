@@ -6,10 +6,6 @@ body {
     min-height: 100%;
 }
 
-#tickets-container {
-    height: 100vh;
-}
-
 .zendesk-color {
     color: #174D4D;
 }
