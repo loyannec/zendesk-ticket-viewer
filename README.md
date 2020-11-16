@@ -2,7 +2,7 @@
 
 Zendesk is a customer service tool that allows the creation and management of support tickets.
 
-<img align="center" src="https://github.com/loyannec/zendesk-ticket-viewer/blob/master/zendesk-logo.png" width="50" >
+<img align="center" src="https://github.com/loyannec/zendesk-ticket-viewer/blob/master/zendesk-logo.png" width="200" >
 
 ## Zendesk Ticket Viewer
 
