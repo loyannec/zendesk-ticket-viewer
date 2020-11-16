@@ -2,9 +2,7 @@ const JSONInitializable = require('./json-initializable')
 
 class Ticket extends JSONInitializable {
     identifier
-    type
     status
-    priority
     tags
     subject
     description
@@ -12,9 +10,7 @@ class Ticket extends JSONInitializable {
     updateAt
 
     constructor(identifier,
-                type,
                 status,
-                priority,
                 tags,
                 subject,
                 description,
@@ -22,9 +18,7 @@ class Ticket extends JSONInitializable {
                 updateAt) {
         super()
         this.identifier = identifier
-        this.type = type
         this.status = status
-        this.priority = priority
         this.tags = tags
         this.subject = subject
         this.description = description
@@ -34,9 +28,7 @@ class Ticket extends JSONInitializable {
 
     static createFromJson(json) {
         return new Ticket(json.id,
-                          json.type,
                           json.status,
-                          json.priority,
                           json.tags,
                           json.subject,
                           json.description,

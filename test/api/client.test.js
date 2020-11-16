@@ -45,9 +45,7 @@ describe('API Client', () => {
         it('Can get a valid ticket', async () => {
             var ticket = {
                 id: 1,
-                type: 'incident',
                 status: 'open',
-                priority: 'normal',
                 tags: ['zendesk', 'support'],
                 subject: 'Subject',
                 description: 'Description',
@@ -60,8 +58,8 @@ describe('API Client', () => {
             expect(response.error).to.be.undefined
             expect(response.success).to.be.an.instanceof(Ticket)
             expect(response.success.identifier).to.be.equal(ticket.id)
-            expect(response.success.type).to.be.equal(ticket.type)
             expect(response.success.status).to.be.equal(ticket.status)
+            expect(response.success.tags).to.be.equal(ticket.tags)
             expect(response.success.subject).to.be.equal(ticket.subject)
             expect(response.success.description).to.be.equal(ticket.description)
             expect(response.success.createdAt).to.be.eql(new Date(ticket.created_at))
@@ -82,9 +80,7 @@ describe('API Client', () => {
             var page = {
                 tickets: [{
                     id: 6,
-                    type: 'incident',
                     status: 'open',
-                    priority: 'normal',
                     tags: ['zendesk', 'support'],
                     subject: 'Normal Priority Ticket',
                     description: 'Description',
@@ -92,9 +88,7 @@ describe('API Client', () => {
                     update_at: '2020-11-15T13:57:32Z'
                 }, {
                     id: 7,
-                    type: 'incident',
                     status: 'closed',
-                    priority: 'high',
                     tags: ['zendesk', 'support'],
                     subject: 'High Priority Ticket',
                     description: 'Description',
