@@ -1,11 +1,11 @@
 {
   "name": "zendesk-ticket-viewer",
   "version": "1.0.0",
-  "description": "Coding Exercise",
+  "description": "Coding Exercise - A simple node.js api client for Zendesk.",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha --recursive",
     "start": "node app.js",
+    "test": "nyc --reporter=text mocha --recursive",
     "watch": "nodemon --ext js,handlebars --ignore public"
   },
   "repository": {
