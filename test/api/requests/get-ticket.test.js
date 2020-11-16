@@ -26,7 +26,7 @@ describe('Get Ticket Zendesk Request', () => {
         expect(response.success.ticket).to.be.eql({ id: 1, subject: 'A Ticket' })
     })
 
-    it('Should return a ticket', async () => {
+    it('Should return an error', async () => {
         nock('https://subdomain.zendesk.com/api/v2')
             .get('/tickets/1.json')
             .replyWithError('bad request')

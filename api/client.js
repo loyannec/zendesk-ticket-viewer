@@ -1,4 +1,4 @@
-const { User, Ticket, TicketListPage } = require('./models')
+const { User, Ticket, TicketsListPage } = require('./models')
 const { GetLoggedInUserZendeskRequest,
         GetTicketZendeskRequest,
         ListTicketsZendeskRequest } = require('./requests')
@@ -24,11 +24,11 @@ class ZendeskAPIClient {
             : { error: response.error }
     }
 
-    async getTicketAtPage(page, size) {
+    async getTicketsAtPage(page, size) {
         var request = new ListTicketsZendeskRequest(this.environment, page, size)
         var response = await request.execute()
         return response.success
-            ? { success: TicketListPage.createFromJson(response.success) }
+            ? { success: TicketsListPage.createFromJson(response.success) }
             : { error: response.error }
     }
 }

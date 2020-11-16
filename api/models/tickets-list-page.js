@@ -1,7 +1,7 @@
 const JSONInitializable = require('./json-initializable')
 const Ticket = require('./ticket')
 
-class TicketListPage extends JSONInitializable {
+class TicketsListPage extends JSONInitializable {
     tickets
     count
     page
@@ -23,7 +23,7 @@ class TicketListPage extends JSONInitializable {
         var hasPrevious = false
 
         if (json.next_page) {
-            let nextPage = TicketListPage.#getPageFromURL(json.next_page)
+            let nextPage = TicketsListPage.#getPageFromURL(json.next_page)
             if (nextPage) {
                 page = nextPage - 1
             }
@@ -31,24 +31,24 @@ class TicketListPage extends JSONInitializable {
         }
 
         if (json.previous_page) {
-            let previousPage = TicketListPage.#getPageFromURL(json.previous_page)
+            let previousPage = TicketsListPage.#getPageFromURL(json.previous_page)
             if (previousPage) {
                 page = previousPage + 1
             }
             hasPrevious = true
         }
 
-        return new TicketListPage(json.tickets.map((t) => Ticket.createFromJson(t)),
-                                  json.count,
-                                  page,
-                                  hasNext,
-                                  hasPrevious)
+        return new TicketsListPage(json.tickets.map((t) => Ticket.createFromJson(t)),
+                                   json.count,
+                                   page,
+                                   hasNext,
+                                   hasPrevious)
     }
 
-    static #getPageFromURL(urlString) {      // private method
+    static #getPageFromURL(urlString) {
         let search = new URLSearchParams(new URL(urlString).search)
         return search.get('page') ? parseInt(search.get('page')) : null
     }
 }
 
-module.exports = TicketListPage
+module.exports = TicketsListPage

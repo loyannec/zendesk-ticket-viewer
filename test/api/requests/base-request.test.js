@@ -11,7 +11,7 @@ describe('Base Zendesk Request', () => {
         request = new BaseZendeskRequest(environment)
     })
 
-    it('Must contains a method named executed', () => {
+    it('Must contain a method named executed', () => {
         expect(request.execute).to.exist
     })
 
@@ -20,13 +20,13 @@ describe('Base Zendesk Request', () => {
     })
 
     it('Must contain a method named get', () => {
-        expect(request.execute).to.exist
+        expect(request.get).to.exist
     })
 
     it('Should be a success when getting something', async () => {
         nock('https://subdomain.zendesk.com/api/v2')
-            .get('/something.json')
-                .reply(200)
+        .get('/something.json')
+            .reply(200)
 
         var response = await request.get('/something.json')
         expect(response.success).to.exist
@@ -35,7 +35,7 @@ describe('Base Zendesk Request', () => {
 
     it('Should be an error when getting something', async () => {
         nock('https://subdomain.zendesk.com/api/v2')
-            .get('/something.json')
+        .get('/something.json')
             .replyWithError('something went wrong')
 
         var response = await request.get('/something.json')

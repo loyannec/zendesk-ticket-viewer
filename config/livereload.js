@@ -11,8 +11,8 @@ module.exports = (app) => {
         setTimeout(() => {                                                       // Execute on future time.
             liveReloadServer.refresh("/")
         }, 50)
-    });
+    })
 
     app.use(connectLivereload())
     app.use(express.static(publicDirectory))
-};
+}

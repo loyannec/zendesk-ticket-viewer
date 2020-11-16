@@ -7,7 +7,7 @@ class Ticket extends JSONInitializable {
     subject
     description
     createdAt
-    updateAt
+    updatedAt
 
     constructor(identifier,
                 status,
@@ -15,7 +15,7 @@ class Ticket extends JSONInitializable {
                 subject,
                 description,
                 createdAt,
-                updateAt) {
+                updatedAt) {
         super()
         this.identifier = identifier
         this.status = status
@@ -23,7 +23,7 @@ class Ticket extends JSONInitializable {
         this.subject = subject
         this.description = description
         this.createdAt = createdAt
-        this.updateAt = updateAt
+        this.updatedAt = updatedAt
     }
 
     static createFromJson(json) {
@@ -33,7 +33,7 @@ class Ticket extends JSONInitializable {
                           json.subject,
                           json.description,
                           new Date(json.created_at),
-                          new Date(json.update_at))
+                          new Date(json.updated_at))
     }
 }
 

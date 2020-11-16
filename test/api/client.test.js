@@ -2,12 +2,12 @@ const expect = require('chai').expect
 const sinon = require('sinon')
 const ZendeskEnvironment = require('../../api/environment')
 const ZendeskAPIClient = require('../../api/client')
-const { User, Ticket, TicketListPage } = require('../../api/models')
+const { User, Ticket, TicketsListPage } = require('../../api/models')
 const { GetLoggedInUserZendeskRequest,
         GetTicketZendeskRequest,
         ListTicketsZendeskRequest } = require('../../api/requests')
 
-describe('API Client', () => {
+describe('API CLient', () => {
     const environment = new ZendeskEnvironment('subdomain', 'username', 'token')
     var client
 
@@ -32,7 +32,7 @@ describe('API Client', () => {
             expect(response.success.email).to.be.equal(user.email)
         })
 
-        it('Fails when ticket request fails', async () => {
+        it('Fails when user request fails', async () => {
             sinon.stub(GetLoggedInUserZendeskRequest.prototype, 'execute').callsFake(() => ({ error: new Error() }))
 
             var response = await client.getUser()
@@ -50,7 +50,7 @@ describe('API Client', () => {
                 subject: 'Subject',
                 description: 'Description',
                 created_at: '2020-11-14T13:57:32Z',
-                update_at: '2020-11-15T13:57:32Z'
+                updated_at: '2020-11-15T13:57:32Z'
             }
             sinon.stub(GetTicketZendeskRequest.prototype, 'execute').callsFake(() => ({ success: { ticket } }))
 
@@ -63,7 +63,7 @@ describe('API Client', () => {
             expect(response.success.subject).to.be.equal(ticket.subject)
             expect(response.success.description).to.be.equal(ticket.description)
             expect(response.success.createdAt).to.be.eql(new Date(ticket.created_at))
-            expect(response.success.updateAt).to.be.eql(new Date(ticket.update_at))
+            expect(response.success.updatedAt).to.be.eql(new Date(ticket.updated_at))
         })
 
         it('Fails when ticket request fails', async () => {
@@ -75,7 +75,7 @@ describe('API Client', () => {
         })
     })
 
-    context('Get Tickets At PAge', () => {
+    context('Get Tickets At Page', () => {
         it('Should return tickets for given page and it should have previous and next page', async () => {
             var page = {
                 tickets: [{
@@ -85,7 +85,7 @@ describe('API Client', () => {
                     subject: 'Normal Priority Ticket',
                     description: 'Description',
                     created_at: '2020-11-14T13:57:32Z',
-                    update_at: '2020-11-15T13:57:32Z'
+                    updated_at: '2020-11-15T13:57:32Z'
                 }, {
                     id: 7,
                     status: 'closed',
@@ -93,17 +93,17 @@ describe('API Client', () => {
                     subject: 'High Priority Ticket',
                     description: 'Description',
                     created_at: '2020-11-14T13:57:32Z',
-                    update_at: '2020-11-15T13:57:32Z'
+                    updated_at: '2020-11-15T13:57:32Z'
                 }],
-                next_page: 'https://zendesk.com/tickets.json?page=4&per_page=6',
+                next_page: 'https://zendesk.com/tickets.json?page=4&per_page=6,',
                 previous_page: 'https://zendesk.com/tickets.json?page=2&per_page=6',
                 count: 100
             }
 
             sinon.stub(ListTicketsZendeskRequest.prototype, 'execute').callsFake(() => ({ success: page }))
 
-            var response = await client.getTicketAtPage(3, 2)
-            expect(response.success).to.be.instanceof(TicketListPage)
+            var response = await client.getTicketsAtPage(3, 2)
+            expect(response.success).to.be.instanceof(TicketsListPage)
             expect(response.success.tickets.length).to.be.equal(2)
             expect(response.success.tickets[0]).to.be.instanceof(Ticket)
             expect(response.success.tickets[0].identifier).to.be.equal(6)
@@ -115,10 +115,10 @@ describe('API Client', () => {
             expect(response.success.hasPrevious).to.be.true
         })
 
-        it('Fails when ticket request also fails', async () => {
+        it('Fails when request also fails', async () => {
             sinon.stub(ListTicketsZendeskRequest.prototype, 'execute').callsFake(() => ({ error: new Error() }))
 
-            var response = await client.getTicketAtPage(1, 10)
+            var response = await client.getTicketsAtPage(1, 10)
             expect(response.success).to.be.undefined
             expect(response.error).to.be.an('error')
         })

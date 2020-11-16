@@ -1,12 +1,12 @@
 module.exports = (app) => {
     const exphbs  = require('express-handlebars')
-    const handlebars = exphbs.create({                 // Module that permits to render a template.
+    const handlebars = exphbs.create({
         helpers: {
             formatDate: (date) => {
-                var time = date.toLocateTimeString([], {
+                var time = date.toLocaleTimeString([], {
                     hour: '2-digit', minute: '2-digit'
                 })
-                var day = date.toLocateTimeString('en-IE', {
+                var day = date.toLocaleDateString('en-IE', {
                     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                 })
                 return `${time}, ${day}`

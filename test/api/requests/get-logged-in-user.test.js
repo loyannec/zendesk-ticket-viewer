@@ -1,14 +1,14 @@
 const expect = require('chai').expect
 const nock = require('nock')
-const GetTLoggedInZendeskRequest = require('../../../api/requests/get-logged-in-user')
+const GetLoggedInUserZendeskRequest = require('../../../api/requests/get-logged-in-user')
 const ZendeskEnvironment = require('../../../api/environment')
 
-describe('Get Logged In Zendesk Request', () => {
+describe('Get Logged In User Zendesk Request', () => {
     var request
 
     beforeEach(() => {
         var environment = new ZendeskEnvironment('subdomain', 'username', 'token')
-        request = new GetTLoggedInZendeskRequest(environment)
+        request = new GetLoggedInUserZendeskRequest(environment)
     })
 
     it('Should return current logged in user', async () => {

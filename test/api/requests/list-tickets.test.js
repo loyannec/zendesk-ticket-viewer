@@ -3,7 +3,7 @@ const nock = require('nock')
 const ListTicketsZendeskRequest = require('../../../api/requests/list-tickets')
 const ZendeskEnvironment = require('../../../api/environment')
 
-describe('List Tickets Request', () => {
+describe('List Tickets Zendesk Request', () => {
     const environment = new ZendeskEnvironment('subdomain', 'username', 'token')
     var request
 
@@ -11,7 +11,7 @@ describe('List Tickets Request', () => {
         request = new ListTicketsZendeskRequest(environment)
     })
 
-    it('Should return a list of tickets', async () => {
+    it('Should return an empty list of tickets', async () => {
         nock('https://subdomain.zendesk.com/api/v2')
             .get('/tickets.json')
             .reply(200, {
@@ -36,7 +36,7 @@ describe('List Tickets Request', () => {
     it('Should send request with pagination', async () => {
         var json = {
             tickets: [{}, {}, {}, {}, {}, {}],
-            next_page: 'https://zendesk.com/tickets.json?page=4&per_page=6',
+            next_page: 'https://zendesk.com/tickets.json?page=4&per_page=6,',
             previous_page: 'https://zendesk.com/tickets.json?page=2&per_page=6',
             count: 300
         }
@@ -51,7 +51,7 @@ describe('List Tickets Request', () => {
         expect(response.success).to.be.eql(json)
     })
 
-    it('Should return a error', async () => {
+    it('Should return an error', async () => {
         nock('https://subdomain.zendesk.com/api/v2')
             .get('/tickets.json')
             .replyWithError('bad request')

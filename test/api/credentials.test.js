@@ -11,5 +11,5 @@ describe('Zendesk Credentials', () => {
         expect(credentials.encoded())
             .to.be
                 .equal('amRvZUBleGFtcGxlLmNvbS90b2tlbjo2d2lJQldiR2tCTW8xbVJETXVWd2t3MUVQc05rZVVqOTVQSXoyYWt2')
-    });
-});
+    })
+})
