@@ -60,29 +60,27 @@ These values are saved in a file, so you don't need to reenter them every time y
 The workflow of the viewer is as follows:
 
 ```
-- User authenticates API login details that are to be used to access the API
+- User authenticates API tickets details that are to be used to access the API
 
 - On successful authentication, the user proceeds to the ticket overview and requests tickets from the server
 
-- The user will be delivered a list of their current tickets, displayed on a page with the first 25 tickets.
+- The application will display the first 25 tickets.
 
 - New 25 tickets will be loaded as you browse the page (scroll) until you reach the end of the ticket list.
 
 - More details can be displayed for a ticket by clicking on either the ticket's ID or subject.
   This will take the user into a detailed view, where they can see more details of the ticket and return to the overview.
 
-- To hide the ticket, it is necessary to click again on the ID or subject.
+- To hide the ticket, it is necessary to click again on the current ticket's ID or to click another ticket's ID.
 ```
 
 ## Testing
 
-Tests are included to test the front-end and server-side functionality.
-
-The functionalities may be tested on designated test views. These are accessible as follows:
+The application may be tested by running the following command:
 
 - Run `npm test` to view test coverage.
 
-The application has been tested and currently has 100% coverage.
+The API layer of the application has been tested and currently has 100% coverage.
 
 ## Static server with Livereload
 
