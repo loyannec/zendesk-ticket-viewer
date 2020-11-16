@@ -1,7 +1,21 @@
-{{each ticketsPage.tickets}}
-    <p>ticket: {{this.subject}}</p>
+{{#each ticketsPage.tickets}}
+    <div class="card">
+        <div class="card-header" id="heading{{this.identifier}}">
+            <h5 class="mb-0">
+                <button onclick="javascript:showTicket({{this.identifier}}, this)" class="btn btn-link collapsed zendesk-color" type="button" data-toggle="collapse" data-target="#collapse{{this.identifier}}" aria-expanded="true" aria-controls="collapse{{this.identifier}}">
+                <strong>#{{this.identifier}} - {{this.subject}}</strong>
+                </button>
+            </h5>
+        </div>
+        <div id="collapse{{this.identifier}}" class="collapse" aria-labelledby="heading{{this.identifier}}" data-parent="#tickets-container">
+            <div class="card-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated w-100 zendesk-bg-color" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 {{/each}}
 {{#unless ticketsPage.hasNext}}
-<p>fim!</p>
+<div class="list-end bg-secondary text-center p-1 text-white"><small>All tickets loaded</small></div>
 {{/unless}}
-
