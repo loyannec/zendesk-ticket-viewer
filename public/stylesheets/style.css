@@ -1,0 +1,55 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+#tickets-container {
+    height: 100vh;
+}
+
+.zendesk-color {
+    color: #174D4D;
+}
+
+.zendesk-bg-color {
+    background-color: #174D4D;
+}
+
+button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+span.rounded {
+    border-radius: 8px !important;
+}
+
+div#loading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    bottom: 0px;
+    opacity: 80%;
+    animation: hide-loading 0.3s linear 0s 1 normal;
+    animation-fill-mode: forwards;
+}
+
+div#loading.show-loading {
+    display: block;
+    visibility: visible;
+    animation: show-loading 0.3s linear 0s 1 normal;
+}
+
+@keyframes show-loading {
+    from { bottom: -50px; }
+    to { bottom: 0px; }
+}
+
+@keyframes hide-loading {
+    from { bottom: 0px; }
+    to { bottom: -50px; }
+}

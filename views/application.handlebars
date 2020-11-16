@@ -1,10 +1,23 @@
-<script src="/javascripts/home.js"></script>
-
 {{#if ticketsPage.success}}
-    {{#if user.success}}<p>tem tickets para: {{user.success.name}}</p>{{/if}}
-    <div id="tickets-container" class="overflow-auto bg-info{{#if ticketsPage.success.hasNext}} has-next{{/if}}" style="height: 800px;">
-        {{>ticket-list ticketsPage=ticketsPage.success}}
+    <div class="p-3 zendesk-bg-color text-white">
+        <h1 class="display-4">Zendesk Ticket Viewer</h1>
+        {{#with user.success}}
+            <p class="text-white">
+                <strong>{{name}}</strong><br />
+                <small class="font-italic">{{email}}</small>
+            </p>
+        {{/with}}
+    </div>
+    <div id="tickets-container" class="accordion overflow-auto">
+        {{>tickets-list ticketsPage=ticketsPage.success}}
+    </div>
+    <div id="loading" class="bg-secondary text-center p-2 d-none">
+        <div class="spinner-border text-white" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 {{else}}
-    <p>sem tickets</p>
+    <div class="p-3 mb-2 bg-danger text-white">
+        Ops, something went wrong. Please, check your internet connection and your credentials.
+    </div>
 {{/if}}
